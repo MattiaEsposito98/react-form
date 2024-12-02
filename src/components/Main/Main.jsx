@@ -22,7 +22,7 @@ export default function Main() {
       title: title,
       image: undefined,
       content: "Lorem ipsum dolor sit amet consectetur adipisicing elit.Numquam eaque vero unde ipsa aut veritatis labore quidem ut fuga! Dolorum odit maxime iusto harum, doloremque provident nisi porro vero quidem.",
-      tags: tag.split(',').map(el => el.trim()), //Separare i tag da virgole in un array, perche nella card tags è un array e dopo rimuovo gli spazi su ogni elemento dell'array
+      tags: newTag.split(',').map(el => el.trim()), //Separare i tag da virgole in un array, perche nella card tags è un array e dopo rimuovo gli spazi su ogni elemento dell'array
       published: true,
     }
 
