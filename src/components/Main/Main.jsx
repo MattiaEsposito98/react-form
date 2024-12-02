@@ -1,23 +1,41 @@
 import { useState } from "react"
 import Card from '../Card/Card'
 import style from './Main.module.css'
-import posts from '../posts'
+import initialPosts from '../posts'
 
 export default function Main() {
 
+  const [posts, setPosts] = useState(initialPosts)
   const [title, setTitle] = useState('')
 
-  const handleSubmit = event => {
+
+
+  const addBlog = event => {
     event.preventDefault()
     console.log("Titolo inviato:" + title)
+
+
+    const newBlog = {
+      id: Date.now(),
+      title: title,
+      image: undefined,
+      content:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit animi unde quasi enim non esse ratione voluptas voluptate, officiis veritatis magni blanditiis possimus nobis cum id inventore corporis deserunt hic.',
+      tags: [],
+      published: true,
+    }
+
+
+    setPosts([...posts, newBlog])
+    setTitle('')
   }
 
   return (
     <main>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={addBlog} action="">
         <input type="text" value={title} onChange={e => { setTitle(e.target.value) }} placeholder="Inserisci il titolo" />
-        <button>Invia</button>
+        <input type="submit" value='Aggiungi' />
       </form>
 
 
