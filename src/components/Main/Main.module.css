@@ -21,4 +21,27 @@ ul {
   list-style: disc;
   margin-left: 3.5rem;
   margin-top: 1rem;
+
+  li {
+    display: flex;
+    align-items: center;
+  }
+
+  button {
+    background-color: red;
+    color: white;
+    border-radius: 0.5rem;
+    padding: 10px;
+    margin-left: auto;
+    margin-top: 1rem;
+    cursor: pointer;
+  }
+
 }
+
+/* .listItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+} */

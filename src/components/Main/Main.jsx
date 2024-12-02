@@ -27,27 +27,32 @@ export default function Main() {
 
     if (title === '') return
 
-
     setPosts([...posts, newBlog])
-    console.log(posts)
     setTitle('')
+  }
+
+  function deleteBlog(blogtext) {
+    setPosts(posts.filter(post => post !== blogtext))
   }
 
   return (
     <main>
+      <section>
+        <form onSubmit={addBlog} action="">
+          <input type="text" value={title} onChange={e => { setTitle(e.target.value) }} placeholder="Inserisci il titolo" />
+          <button type="submit"> Aggiungi</button>
+        </form>
+        <div className={style.listItem}>
+          <ul>
+            {posts.filter(post => post.published === true).map(post => (
 
-      <form onSubmit={addBlog} action="">
-        <input type="text" value={title} onChange={e => { setTitle(e.target.value) }} placeholder="Inserisci il titolo" />
-
-        <button type="submit"> Aggiungi</button>
-      </form>
-      <div>
-        <ul>
-          {posts.filter(post => post.published === true).map(post => (
-            <li key={post.id}> {post.title}</li>
-          ))}
-        </ul>
-      </div>
+              <li key={post.id}> {post.title}
+                <button onClick={() => deleteBlog(post)}>Elimina</button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
 
       <section className={style.section}>
