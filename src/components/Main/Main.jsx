@@ -7,21 +7,22 @@ export default function Main() {
 
   const [posts, setPosts] = useState(initialPosts)
   const [title, setTitle] = useState('')
+  const [newTag, setTag] = useState('')
 
 
 
   const addBlog = event => {
     event.preventDefault()
     console.log("Titolo inviato:" + title)
+    console.log("tag inviato:" + newTag)
 
 
     const newBlog = {
       id: Date.now(),
       title: title,
       image: undefined,
-      content:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit animi unde quasi enim non esse ratione voluptas voluptate, officiis veritatis magni blanditiis possimus nobis cum id inventore corporis deserunt hic.',
-      tags: [],
+      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit.Numquam eaque vero unde ipsa aut veritatis labore quidem ut fuga! Dolorum odit maxime iusto harum, doloremque provident nisi porro vero quidem.",
+      tags: tag.split(',').map(el => el.trim()), //Separare i tag da virgole in un array, perche nella card tags è un array e dopo rimuovo gli spazi su ogni elemento dell'array
       published: true,
     }
 
@@ -29,6 +30,7 @@ export default function Main() {
 
     setPosts([...posts, newBlog])
     setTitle('')
+    setTag('')
   }
 
   function deleteBlog(blogtext) {
@@ -40,6 +42,7 @@ export default function Main() {
       <section>
         <form onSubmit={addBlog} action="">
           <input type="text" value={title} onChange={e => { setTitle(e.target.value) }} placeholder="Inserisci il titolo" />
+          <input type="text" value={newTag} onChange={e => { setTag(e.target.value) }} placeholder="Inserisci il tag" />
           <button type="submit"> Aggiungi</button>
         </form>
         <div className={style.listItem}>
