@@ -25,8 +25,11 @@ export default function Main() {
       published: true,
     }
 
+    if (title === '') return
+
 
     setPosts([...posts, newBlog])
+    console.log(posts)
     setTitle('')
   }
 
@@ -35,8 +38,16 @@ export default function Main() {
 
       <form onSubmit={addBlog} action="">
         <input type="text" value={title} onChange={e => { setTitle(e.target.value) }} placeholder="Inserisci il titolo" />
-        <input type="submit" value='Aggiungi' />
+
+        <button type="submit"> Aggiungi</button>
       </form>
+      <div>
+        <ul>
+          {posts.filter(post => post.published === true).map(post => (
+            <li key={post.id}> {post.title}</li>
+          ))}
+        </ul>
+      </div>
 
 
       <section className={style.section}>
