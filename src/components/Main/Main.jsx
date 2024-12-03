@@ -39,7 +39,7 @@ export default function Main() {
 
   return (
     <main>
-      <section>
+      <section className={style.section}>
         <form onSubmit={addBlog} action="">
           <input type="text" value={title} onChange={e => { setTitle(e.target.value) }} placeholder="Inserisci il titolo" />
           <input type="text" value={newTag} onChange={e => { setTag(e.target.value) }} placeholder="Inserisci il tag" />
@@ -58,7 +58,7 @@ export default function Main() {
       </section>
 
 
-      <section className={style.section}>
+      <section>
         <div className="container">
           {
             posts.length ?
